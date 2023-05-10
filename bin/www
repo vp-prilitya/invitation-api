@@ -3,8 +3,10 @@ var app = require("../app");
 var debug = require("debug")("server-semina:server");
 var http = require("http");
 
-// (1) import package db
-// const db = require("../app/db");
+const db = require("../app/db");
+db.sequelize.sync();
+const dotenv = require("dotenv");
+dotenv.config();
 
 /**
  * Get port from environment and store in Express.
@@ -21,7 +23,7 @@ var server = http.createServer(app);
 
 const socketIO = require("socket.io")(server, {
   cors: {
-    origin: "http://192.168.6.148:3000",
+    origin: process.env.APP,
   },
 });
 

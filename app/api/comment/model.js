@@ -1,17 +1,16 @@
-const mongoose = require("mongoose");
-const { model, Schema } = mongoose;
-
-let commentSchema = Schema(
-  {
+module.exports = (sequelize, Sequelize) => {
+  const Comments = sequelize.define("comments", {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     name: {
-      type: String,
-      required: [true, "Nama harus diisi"],
+      type: Sequelize.STRING,
     },
     message: {
-      type: String,
+      type: Sequelize.STRING,
     },
-  },
-  { timestamps: true }
-);
-
-module.exports = model("Comments", commentSchema);
+  });
+  return Comments;
+};

@@ -1,7 +1,8 @@
-const Comments = require("../../api/comment/model");
+const db = require("../../db");
+const Comments = db.comment;
 
 const getAllComments = async (req) => {
-  const result = await Comments.find();
+  const result = await Comments.findAll({ order: [["createdAt", "DESC"]] });
 
   return result;
 };
