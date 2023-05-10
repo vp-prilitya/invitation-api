@@ -23,7 +23,7 @@ var server = http.createServer(app);
 
 const socketIO = require("socket.io")(server, {
   cors: {
-    origin: process.env.APP,
+    origin: "*",
     credentials: true,
   },
 });
