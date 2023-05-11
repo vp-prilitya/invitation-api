@@ -7,9 +7,7 @@ const {
 const find = async (req, res, next) => {
   try {
     const result = await getAllComments(req);
-    res.status(StatusCodes.OK).json({
-      data: result,
-    });
+    res.status(StatusCodes.OK).send(result);
   } catch (err) {
     next(err);
   }
